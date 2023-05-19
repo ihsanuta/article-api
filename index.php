@@ -18,26 +18,14 @@ $request_method=$_SERVER["REQUEST_METHOD"];
 switch ($request_method) {
     case 'POST':
         $data = json_decode(file_get_contents("php://input"));
-        $resp = $api->createArticle($data);
-        if ($resp->status == "success"){
-            header("HTTP/1.0 201 Created");
-        }else{
-            header("HTTP/1.0 500 Internal Server Error");
-        }
-        echo json_encode($resp);
+        echo $api->createArticle($data);
         break;
     case 'PUT':
         $url = explode("/",$_SERVER['REQUEST_URI']);
         $id =  intval($url[2]);
         if($id > 0){
             $data = json_decode(file_get_contents("php://input"));
-            $resp = $api->updateArticle($id,$data);
-            if ($resp->status == "success"){
-                header("HTTP/1.0 200 OK");
-            }else{
-                header("HTTP/1.0 500 Internal Server Error");
-            }
-            echo json_encode($resp);
+            echo $api->updateArticle($id,$data);
         }else{
             header("HTTP/1.0 400 Bad Request");
             echo json_encode([

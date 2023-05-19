@@ -26,6 +26,8 @@ CREATE TABLE `article` (
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
+Seeder article data with query in database.sql
+
 ## Setup ENV
 Open file .env and set with configuration database
 ```
